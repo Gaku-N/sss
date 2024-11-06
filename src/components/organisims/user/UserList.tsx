@@ -1,7 +1,23 @@
 import { FC, memo, useEffect } from 'react';
-import { Center, Flex, Spinner } from '@chakra-ui/react';
+import {
+  Button,
+  Center,
+  DialogActionTrigger,
+  DialogBody,
+  DialogCloseTrigger,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogRoot,
+  DialogTitle,
+  DialogTrigger,
+  Flex,
+  Spinner,
+  useDisclosure,
+} from '@chakra-ui/react';
 import { UserCard } from './UserCard';
 import { useAllUsers } from '../../../hooks/useAllUsers';
+import { Dialog } from '@/components/molecules/Dialog';
 
 export const UserList: FC = memo(() => {
   const { getUsers, loading, users } = useAllUsers();
@@ -9,6 +25,7 @@ export const UserList: FC = memo(() => {
   useEffect(() => getUsers, []);
   return (
     <>
+    <Dialog />
       {loading ? (
         <Center h='100vh '>
           <Spinner />
