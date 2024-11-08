@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { memo } from 'react';
+import { HeaderLayout } from '@/components/templates/HeaderLayout';
 
 export const MenuLogin = memo(() => {
   // 重たいデータ
@@ -42,62 +43,67 @@ export const MenuLogin = memo(() => {
 
   const { showMessage } = useMessage();
   const onClickButton = () => {
-    showMessage({title: 'ログイン', description: 'ログインに成功しました', type: 'success'})
+    showMessage({
+      title: 'ログイン',
+      description: 'ログインに成功しました',
+      type: 'success',
+    });
   };
 
   return (
     <>
-      {/* <Toaster /> */}
-      <Flex
-        alignItems='center'
-        justifyContent='center'
-        height='100vh'
-      >
-        <Box
-          bg='white'
-          w='sm'
-          p={4}
-          borderRadius='md'
-          shadow='md'
+      <HeaderLayout>
+        <Flex
+          alignItems='center'
+          justifyContent='center'
+          height='100vh'
         >
-          <Heading>
-            <Center>
-              <HStack gap={4}>
-                <IconMenu imgPath='/vite.svg' />
-              </HStack>
-            </Center>
-            <Center fontSize='12px'>
-              Not a member yet?
-              <Link
-                pl={2}
-                href='#'
-              >
-                Sign Up here
-              </Link>
-            </Center>
-            <Stack
-              gap={6}
-              py={4}
-              px={10}
-            >
-              <Input placeholder='ユーザーID' />
-              <Input placeholder='パスワード' />
-              <Checkbox>Save Password</Checkbox>
-              <Button
-                bg='teal.400'
-                color='white'
-                _hover={{ opacity: 0.8 }}
-                onClick={onClickButton}
-              >
-                ログイン
-              </Button>
-              <Center fontSize='12px'>
-                <Link href='#'>Forget Password?</Link>
+          <Box
+            bg='white'
+            w='sm'
+            p={4}
+            borderRadius='md'
+            shadow='md'
+          >
+            <Heading>
+              <Center>
+                <HStack gap={4}>
+                  <IconMenu imgPath='/vite.svg' />
+                </HStack>
               </Center>
-            </Stack>
-          </Heading>
-        </Box>
-      </Flex>
+              <Center fontSize='12px'>
+                Not a member yet?
+                <Link
+                  pl={2}
+                  href='#'
+                >
+                  Sign Up here
+                </Link>
+              </Center>
+              <Stack
+                gap={6}
+                py={4}
+                px={10}
+              >
+                <Input placeholder='ユーザーID' />
+                <Input placeholder='パスワード' />
+                <Checkbox>Save Password</Checkbox>
+                <Button
+                  bg='teal.400'
+                  color='white'
+                  _hover={{ opacity: 0.8 }}
+                  onClick={onClickButton}
+                >
+                  ログイン
+                </Button>
+                <Center fontSize='12px'>
+                  <Link href='#'>Forget Password?</Link>
+                </Center>
+              </Stack>
+            </Heading>
+          </Box>
+        </Flex>
+      </HeaderLayout>
     </>
   );
 });
