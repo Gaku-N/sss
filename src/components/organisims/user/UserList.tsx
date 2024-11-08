@@ -1,28 +1,22 @@
-import { FC, memo, useEffect } from 'react';
+import { FC, memo, useContext, useEffect } from 'react';
 import {
-  Button,
   Center,
-  DialogActionTrigger,
-  DialogBody,
-  DialogCloseTrigger,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogRoot,
-  DialogTitle,
-  DialogTrigger,
   Flex,
   Spinner,
-  useDisclosure,
 } from '@chakra-ui/react';
 import { UserCard } from './UserCard';
 import { useAllUsers } from '../../../hooks/useAllUsers';
 import { Dialog } from '@/components/molecules/Dialog';
+import { UserContext} from '../../../providers/UserProvider';
 
 export const UserList: FC = memo(() => {
   const { getUsers, loading, users } = useAllUsers();
   users.map((user) => console.log(user));
   useEffect(() => getUsers, []);
+
+  const { userInfo, setUserInfo } = useContext(UserContext)
+  console.log('ユーザーリスト', userInfo);
+  // setUserInfo({id:998, name: 'aaaa'})
   return (
     <>
     <Dialog />
