@@ -1,6 +1,7 @@
-import { Box, Button, Flex, Heading } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, IconButton } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { FC } from 'react';
+import { MenuDrawer } from './MenuDrawer';
 
 export const Header: FC = () => {
   let navigate = useNavigate();
@@ -11,26 +12,44 @@ export const Header: FC = () => {
     navigate('/userlist');
   };
   return (
-    <Flex
-      as='nav'
-      bg='teal.500'
-      color='gray.50'
-      align='center'
-      justify='space-between'
-      padding={{ base: 3, md: 5 }}
-    >
-      <Heading
-        as='h1'
-        fontSize={{ base: 'md', md: 'lg' }}
+    <>
+      <Flex
+        as='nav'
+        bg='tesl.500'
+        color='gray.50'
+        align='center'
+        justify='space-between'
+        padding={{ base: 3, md: 5 }}
       >
-        <Button onClick={onClickLogin}>ログイン</Button>
-      </Heading>
-      {/* <Box>
-        <Button onClick={onClickLogin}>ログイン</Button>
-      </Box> */}
-      <Box>
-        <Button onClick={onClickList}>一覧</Button>
-      </Box>
-    </Flex>
+        <Flex
+          align='center'
+          as='a'
+        >
+          <Heading
+            as='h1'
+            mr={8}
+            fontSize={{ base: 'md', md: 'lg' }}
+            _hover={{ cursor: 'pointer' }}
+            onClick={onClickLogin}
+          >
+            タイトル
+          </Heading>
+        </Flex>
+        <Flex
+          align='center'
+          as='a'
+          flexGrow={2}
+          display={{ base: 'none', md: 'flex' }}
+        >
+          <Box pr={4}>
+            <Button onClick={onClickLogin}>ログイン</Button>
+          </Box>
+          <Box>
+            <Button onClick={onClickList}>一覧</Button>
+          </Box>
+        </Flex>
+        <MenuDrawer />
+      </Flex>
+    </>
   );
 };
